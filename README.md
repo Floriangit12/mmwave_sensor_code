@@ -1,4 +1,6 @@
 # mmwave_sensor_code
+Installer Code Composer Studio CCS de chez TI derniere version
+Installer le SDK mmwave sdk derniere version 
 add in CCS ccs_folder_name
 LVDS data config
 -	Header number of objects 16b
