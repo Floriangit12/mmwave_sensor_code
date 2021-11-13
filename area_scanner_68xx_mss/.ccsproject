@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<ccsVersion value="11.0.0"/>
+	<deviceVariant value="Cortex R.IWR6843"/>
+	<deviceFamily value="TMS470"/>
+	<deviceEndianness value="little"/>
+	<codegenToolVersion value="16.9.6.LTS"/>
+	<isElfFormat value="true"/>
+	<linkerCommandFile value="mmw_mss_linker.cmd"/>
+	<rts value="libc.a"/>
+	<createSlaveProjects value=""/>
+	<templateProperties value="id=68xx_area_scanner_mss.projectspec.area_scanner_68xx_mss,type=rtsc,products=com.ti.rtsc.SYSBIOS:6.73.01.01;com.ti.MMWAVE_SDK:03.05.00.04,xdcToolsVersion=3.50.08.24_core,target=ti.targets.arm.elf.R4Ft,platform=ti.platforms.cortexR:IWR68XX:false:200,endianness=little,output_format=elf,buildProfile=release,configuroOptions=--compileOptions &quot;--enum_type=int &quot; "/>
+	<origin value="C:\ti\mmwave_industrial_toolbox_4_9_0\labs\area_scanner\68xx_area_scanner\src\68xx_area_scanner_mss.projectspec"/>
+	<filesToOpen value=""/>
+</projectOptions>
