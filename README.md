@@ -6,6 +6,7 @@ add in CCS ccs_folder_name
 LVDS data config
 -	Header number of objects 16b
 -	Data object 32b per object: 10b per axe (x,y,z)  
+
 SPI config
 -	With API send command 
 
