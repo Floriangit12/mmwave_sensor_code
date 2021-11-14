@@ -59,12 +59,6 @@
  */
 /** @defgroup CLI_UTIL      CLI Utility
  */
-#ifndef CLI_H
-#define CLI_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /* mmWave SDK Include Files: */
 #include <ti/control/mmwave/mmwave.h>
@@ -133,9 +127,5 @@ extern int32_t SPI_CLI_close (void);
 extern void    CLI_getMMWaveExtensionConfig(MMWave_CtrlCfg* ptrCtrlCfg);
 extern void    CLI_getMMWaveExtensionOpenConfig(MMWave_OpenCfg* ptrOpenCfg);
 
-#ifdef __cplusplus
-}
-#endif
 
-#endif /* CLI_H */
 

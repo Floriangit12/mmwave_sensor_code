@@ -17,6 +17,8 @@ ORDERED_OBJS += \
 "./mss/mmwdemo_monitor.oer4f" \
 "./mss/mmwdemo_rfparser.oer4f" \
 "./mss/mss_main.oer4f" \
+"./mss/spi.oer4f" \
+"./mss/spi_cli.oer4f" \
 "./utils/tracker_utils.oer4f" \
 "C:/ti/mmwave_industrial_toolbox_4_9_0/labs/area_scanner/68xx_area_scanner/src/mss/mmw_mss_linker.cmd" \
 "C:/ti/mmwave_industrial_toolbox_4_9_0/labs/area_scanner/68xx_area_scanner/src/mss/r4f_linker.cmd" \
@@ -175,13 +177,13 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "area_scanner_68xx_mss_isk.xer4f"
 
 dependents:
-	-cd C:/Users/User/workspace_v11/area_scanner_68xx_dss/isk && $(MAKE) clean all
+	-cd C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_dss/isk && $(MAKE) clean all
 
 # Tool invocations
-area_scanner_68xx_mss_isk.xer4f: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/User/workspace_v11/area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.xe674
+area_scanner_68xx_mss_isk.xer4f: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.xe674
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7R4 --code_state=16 --float_support=VFPv3D16 -me -O3 --define=SOC_XWR68XX --define=SUBSYS_MSS --define=MMWAVE_L3RAM_NUM_BANK=6 --define=MMWAVE_SHMEM_TCMA_NUM_BANK=0 --define=MMWAVE_SHMEM_TCMB_NUM_BANK=0 --define=MMWAVE_SHMEM_BANK_SIZE=0x20000 --define=MMWAVE_L3_CODEMEM_SIZE=0x100 --define=DOWNLOAD_FROM_CCS --define=DebugP_ASSERT_ENABLED --define=_LITTLE_ENDIAN --define=OBJDET_NO_RANGE --define=GTRACK_3D --define=APP_RESOURCE_FILE='<'mmw_res.h'>' -g --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --enum_type=int --abi=eabi --obj_extension=.oer4f -z -m"area_scanner_68xx_mss_isk.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ti-cgt-arm_16.9.6.LTS/lib" -i"C:/Users/User/workspace_v11/area_scanner_68xx_mss" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/mmwave/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/mmwavelink/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/dpm/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/adcbuf/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/crc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/dma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/edma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/esm/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/gpio/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/hwa/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/mailbox/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/osal/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/pinmux/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/soc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/uart/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/cli/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/mathutils/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/datapath/dpu/rangeproc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/datapath/dpedma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/cbuff/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/hsiheader/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/qspi/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/qspiflash/lib" -i"C:/ti/mmwave_industrial_toolbox_4_9_0/labs/common/src/alg/gtrack/lib" -i"C:/ti/mmwave_industrial_toolbox_4_9_0/labs/common/src/dpu/trackerproc/lib" -i"C:/ti/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --disable_auto_rts --define=MMWAVE_L3RAM_NUM_BANK=6 --define=MMWAVE_SHMEM_TCMA_NUM_BANK=0 --define=MMWAVE_SHMEM_TCMB_NUM_BANK=0 --define=MMWAVE_SHMEM_BANK_SIZE=0x20000 --define=MMWAVE_L3_CODEMEM_SIZE=0x100 --diag_error=10015 --diag_warning=225 --diag_wrap=off --display_error_number --warn_sections --xml_link_info="xwr68xx_mmw_demo_mss_linkInfo.xml" --rom_model --unused_section_elimination=on -o "area_scanner_68xx_mss_isk.xer4f" $(ORDERED_OBJS)
+	"C:/ti/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7R4 --code_state=16 --float_support=VFPv3D16 -me -O3 --define=SOC_XWR68XX --define=SUBSYS_MSS --define=MMWAVE_L3RAM_NUM_BANK=6 --define=MMWAVE_SHMEM_TCMA_NUM_BANK=0 --define=MMWAVE_SHMEM_TCMB_NUM_BANK=0 --define=MMWAVE_SHMEM_BANK_SIZE=0x20000 --define=MMWAVE_L3_CODEMEM_SIZE=0x100 --define=DOWNLOAD_FROM_CCS --define=DebugP_ASSERT_ENABLED --define=_LITTLE_ENDIAN --define=OBJDET_NO_RANGE --define=GTRACK_3D --define=APP_RESOURCE_FILE='<'mmw_res.h'>' -g --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --enum_type=int --abi=eabi --obj_extension=.oer4f -z -m"area_scanner_68xx_mss_isk.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ti-cgt-arm_16.9.6.LTS/lib" -i"C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_mss" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/mmwave/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/mmwavelink/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/control/dpm/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/adcbuf/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/crc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/dma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/edma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/esm/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/gpio/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/hwa/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/mailbox/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/osal/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/pinmux/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/soc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/uart/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/cli/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/mathutils/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/datapath/dpu/rangeproc/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/datapath/dpedma/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/cbuff/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/utils/hsiheader/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/qspi/lib" -i"C:/ti/mmwave_sdk_03_05_00_04/packages/ti/drivers/qspiflash/lib" -i"C:/ti/mmwave_industrial_toolbox_4_9_0/labs/common/src/alg/gtrack/lib" -i"C:/ti/mmwave_industrial_toolbox_4_9_0/labs/common/src/dpu/trackerproc/lib" -i"C:/ti/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --disable_auto_rts --define=MMWAVE_L3RAM_NUM_BANK=6 --define=MMWAVE_SHMEM_TCMA_NUM_BANK=0 --define=MMWAVE_SHMEM_TCMB_NUM_BANK=0 --define=MMWAVE_SHMEM_BANK_SIZE=0x20000 --define=MMWAVE_L3_CODEMEM_SIZE=0x100 --diag_error=10015 --diag_warning=225 --diag_wrap=off --display_error_number --warn_sections --xml_link_info="xwr68xx_mmw_demo_mss_linkInfo.xml" --rom_model --unused_section_elimination=on -o "area_scanner_68xx_mss_isk.xer4f" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -197,23 +199,23 @@ area_scanner_68xx_mss_isk.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "objdetrangehwa.oer4f" "mss\mmw_cli.oer4f" "mss\mmw_lvds_stream.oer4f" "mss\mmwdemo_adcconfig.oer4f" "mss\mmwdemo_monitor.oer4f" "mss\mmwdemo_rfparser.oer4f" "mss\mss_main.oer4f" "utils\tracker_utils.oer4f" 
-	-$(RM) "objdetrangehwa.d" "mss\mmw_cli.d" "mss\mmw_lvds_stream.d" "mss\mmwdemo_adcconfig.d" "mss\mmwdemo_monitor.d" "mss\mmwdemo_rfparser.d" "mss\mss_main.d" "utils\tracker_utils.d" 
+	-$(RM) "objdetrangehwa.oer4f" "mss\mmw_cli.oer4f" "mss\mmw_lvds_stream.oer4f" "mss\mmwdemo_adcconfig.oer4f" "mss\mmwdemo_monitor.oer4f" "mss\mmwdemo_rfparser.oer4f" "mss\mss_main.oer4f" "mss\spi.oer4f" "mss\spi_cli.oer4f" "utils\tracker_utils.oer4f" 
+	-$(RM) "objdetrangehwa.d" "mss\mmw_cli.d" "mss\mmw_lvds_stream.d" "mss\mmwdemo_adcconfig.d" "mss\mmwdemo_monitor.d" "mss\mmwdemo_rfparser.d" "mss\mss_main.d" "mss\spi.d" "mss\spi_cli.d" "utils\tracker_utils.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '
 
 post-build:
-	-rm -f C:/Users/User/workspace_v11/area_scanner_68xx_mss/area_scanner_68xx_demo_isk.bin
+	-rm -f C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_mss/area_scanner_68xx_demo_isk.bin
 	-C:/ti/mmwave_sdk_03_05_00_04/packages/scripts/ImageCreator/out2rprc/out2rprc.exe area_scanner_68xx_mss_isk.xer4f area_scanner_68xx_mss_isk.tmp
-	-C:/ti/mmwave_sdk_03_05_00_04/packages/scripts/ImageCreator/multicore_image_generator/MulticoreImageGen.exe LE 37 0x00000006 area_scanner_68xx_demo_isk.bin 0x35510000 area_scanner_68xx_mss_isk.tmp 0xb5510000 C:/ti/mmwave_sdk_03_05_00_04/firmware/radarss/xwr6xxx_radarss_rprc.bin 0xd5510000 C:/Users/User/workspace_v11/area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.bin
+	-C:/ti/mmwave_sdk_03_05_00_04/packages/scripts/ImageCreator/multicore_image_generator/MulticoreImageGen.exe LE 37 0x00000006 area_scanner_68xx_demo_isk.bin 0x35510000 area_scanner_68xx_mss_isk.tmp 0xb5510000 C:/ti/mmwave_sdk_03_05_00_04/firmware/radarss/xwr6xxx_radarss_rprc.bin 0xd5510000 C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.bin
 	-C:/ti/mmwave_sdk_03_05_00_04/packages/scripts/ImageCreator/crc_multicore_image/crc_multicore_image.exe area_scanner_68xx_demo_isk.bin area_scanner_68xx_demo_isk.tmp
 	-C:/ti/mmwave_sdk_03_05_00_04/packages/scripts/ImageCreator/append_bin_crc/gen_bincrc32.exe area_scanner_68xx_demo_isk.bin
 	-@echo ' '
 
 .PHONY: all clean dependents
 .SECONDARY:
-C:/Users/User/workspace_v11/area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.xe674:
+C:/Users/User/Desktop/repository_mmwave_sensor/mmwave_sensor_code/ccs_area_scanner_68xx_dss/isk/area_scanner_68xx_dss_isk.xe674:
 
 -include ../makefile.targets
 

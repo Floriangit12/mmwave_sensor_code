@@ -21,7 +21,8 @@
  *  @retval    Successful         =0
  *                 Failed         <0
  */
-static int32_t spiRead(const SPI_Handle handle, uint32_t dataLen, void* buffer, uint8_t slaveIndex)
+#include <ti/drivers/spi/SPI.h>
+static int32_t spi_Read(const SPI_Handle handle, uint32_t dataLen, void* buffer, uint8_t slaveIndex)
 {
     SPI_Transaction transaction;
 
@@ -52,7 +53,7 @@ static int32_t spiRead(const SPI_Handle handle, uint32_t dataLen, void* buffer, 
  *  @retval    Successful         =0
  *                 Failed         <0
  */
-static int32_t spiWrite(const SPI_Handle handle, uint32_t dataLen, void* buffer, uint8_t slaveIndex)
+static int32_t spi_Write(const SPI_Handle handle, uint32_t dataLen, void* buffer, uint8_t slaveIndex)
 {
     SPI_Transaction transaction;
 

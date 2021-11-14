@@ -55,14 +55,13 @@
 /* mmWave SDK Include Files: */
 #include <ti/common/sys_common.h>
 #include <ti/drivers/uart/UART.h>
-#include <ti/utils/cli/cli.h>
 
 
 /* Include Files: */
 #include <ti/sysbios/BIOS.h>
 #include <ti/sysbios/knl/Task.h>
-#include <ti/utils/cli/cli.h>
 #include "spi_cli.h"
+#include "spi.h"
 #define CLI_MAX_PARTNO_STRING_LEN          31U
 /**************************************************************************
  *************************** Global Variables *****************************
@@ -148,7 +147,7 @@ typedef struct SPI_CLI_Cfg_t
     /**
      * @brief   UART Command Handle used by the CLI
      */
-   // SPI_Handle         clispi;
+    SPI_Handle         cliSpiHandle;
 
     /**
      * @brief   The CLI has an mmWave extension which can be enabled by this
@@ -308,7 +307,8 @@ static void CLI_task(UArg arg0, UArg arg1)
         memset ((void *)&cmdString[0], 0, sizeof(cmdString));
 
         /* Read the command message from the UART: */
-        UART_read (gCLI.cfg.cliUartHandle, &cmdString[0], (sizeof(cmdString) - 1));
+        spi_Read(gCLI.cfg.cliSpiHandle, (sizeof(cmdString) - 1), &cmdString[0], 1);
+       // UART_read (gCLI.cfg.cliUartHandle, &cmdString[0], (sizeof(cmdString) - 1));
 
         /* Reset all the tokenized arguments: */
         memset ((void *)&tokenizedArgs, 0, sizeof(tokenizedArgs));
@@ -400,7 +400,7 @@ static void CLI_task(UArg arg0, UArg arg1)
  *  @retval
  *      Not Applicable.
  */
-void CLI_write (const char* format, ...)
+void SPI_CLI_write (const char* format, ...)
 {
     va_list     arg;
     char        logMessage[256];
@@ -426,7 +426,7 @@ void CLI_write (const char* format, ...)
     else
     {
         /* Blocking Mode: */
-        spiWrite (gCLI.cfg.cliUartHandle, (uint8_t*)&logMessage[0], sizeMessage);
+        spiWrite (gCLI.cfg.cliSpiHandle, (uint8_t*)&logMessage[0], sizeMessage);
     }
 }
 
@@ -445,7 +445,7 @@ void CLI_write (const char* format, ...)
  *  @retval
  *      Error   -   <0
  */
-int32_t CLI_open (CLI_Cfg* ptrCLICfg)
+int32_t SPI_CLI_open (CLI_Cfg* ptrCLICfg)
 {
     Task_Params     taskParams;
     uint32_t        index;
@@ -518,7 +518,7 @@ int32_t CLI_open (CLI_Cfg* ptrCLICfg)
  *  @retval
  *      Error   -   <0
  */
-int32_t CLI_close (void)
+int32_t SPI_CLI_close (void)
 {
     /* Shutdown the CLI Task */
     Task_delete(&gCLI.cliTaskHandle);
