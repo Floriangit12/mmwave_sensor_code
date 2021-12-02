@@ -13,6 +13,11 @@ SPI config
 ![image](https://user-images.githubusercontent.com/76617468/141648617-c2b370f7-d95a-4824-9aab-1934e385c6ba.png)
 
 # A faire :
+
+Programmation soc fpga 
+       Refaire comparaison et optimiser 
+
+
 créer une tache spi qui permet si la communication est activé, lire les valeurs et retourner message.
 
 SPI_MISO master I / slave O 
